@@ -41,12 +41,17 @@ void thread_entry(void)
 	k_timer_init(&t, NULL, NULL);
 
 	while (1) 
-  {
-    counter = counter + 1;
-		gpio_pin_set(dev, PIN1, (int)led_is_on);
+   {
+    	counter++;
+		//try syntax error check test;
+
+		gpio_pin_set(dev, 
+		PIN1, (int)led_is_on);
 		led_is_on = !led_is_on;
+		printf(counter, "\n"); ////////////////
 		k_timer_start(&t, K_MSEC(2000), K_NO_WAIT);
 		k_timer_status_sync(&t);
+		
 	}
 }
 
@@ -69,18 +74,19 @@ void main(void)
                     0,
                     K_NO_WAIT);
 
-	if (dev == NULL) {
+	if (dev == NULL) 
+	{
 		return;
 	}
 
 	ret = gpio_pin_configure(dev, PIN0, GPIO_OUTPUT_ACTIVE | FLAGS0);
 	if (ret < 0) 
-  {
+  	{
 		return;
 	}
 
 	while (1) 
-  {
+    {
 		gpio_pin_set  (dev, PIN0, (int)led_is_on);  
 		led_is_on = !led_is_on;
 		k_msleep(500);

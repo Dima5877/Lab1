@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2016 Intel Corporation
- *
- * SPDX-License-Identifier: Apache-2.0
- */
-
 #include <zephyr.h>
 #include <device.h>
 #include <devicetree.h>
@@ -22,9 +16,9 @@
 #else
 /* A build error here means your board isn't set up to blink an LED. */
 #error "Unsupported board: led0 devicetree alias is not defined"
-#define LED0	""
+#define LED0 ""
 #define PIN	0
-#define FLAGS	0
+#define FLAGS 0
 #endif
 
 void main(void)
@@ -47,8 +41,8 @@ void main(void)
 
 	while (1) 
 	{
-		gpio_pin_set(dev, PIN, (int)led_is_on);
-		led_is_on = !led_is_on;
-		k_msleep(SLEEP_TIME_MS);
+		myFunc(dev, &led_is_on, PIN);
+
+		
 	}
 }
