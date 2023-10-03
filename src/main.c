@@ -15,7 +15,7 @@
 #define FLAGS	DT_GPIO_FLAGS(LED0_NODE, gpios)
 #else
 /* A build error here means your board isn't set up to blink an LED. */
-#error "Unsupported board: led0 devicetree alias is not defined"
+#error "Unsupported board: led0 devicetree alias is not defined HIDDEN MESSAGE"
 #define LED0 ""
 #define PIN	0
 #define FLAGS 0
